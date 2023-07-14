@@ -1,0 +1,14 @@
+\graphicspath{{Images/}}
+
+\section{Geral}
+Na Folha "Geral" correm três scipts iniciados por dois botões: "TROCAS" e "PÓS SERVIÇO".
+
+\subsection{Atualização de trocas}
+A função "aCode" (Geral Trocas) é iniciada pelo botão "TROCAS". Este script inicia por limpar o conteúdo das colunas G e H. Percorre a tabela de trocas e coloca as trocas nas várias escalas da folha. No final inicia a função "verificar" (Geral verificaTrocas).
+
+\subsection{Verificação de Trocas}
+Esta função é inicia a partir da "aCode" (Geral Trocas). O objetivo desta função é verificar as trocas,
+"verificar" (Geral verificaTrocas). Este script está divido em três grupos. O primeiro verifica se os alunos estão a fazer troca e destroca na mesma escala, o segundo verifica se os alunos estão de dispensa, caso seja verdade, retira-os da escala. Na terceira parte verifica se os alunos que estão dispensados permanecem nessa situação.
+
+\subsection{Atualização de Escala}
+Este script faz atualização da escala após a realização do serviço. "tiraTrocas" (Geral atualizaDeEscala) inicia por verificar os "PTs" e os "PDs" na primeira escala e altera a cor desse NIP na tabela de trocas (O:P). Coloca a data da escala na coluna D (Data de ultimo serviço) na folha "Motor". Caso se efetue a destroca elimina os NIPs da tabela de trocas. Elimina as colunas vazias da tabela de trocas.

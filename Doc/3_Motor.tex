@@ -1,0 +1,5 @@
+\graphicspath{{Images/}}
+
+\section{Motor}
+
+É a folha responsável pela ordenção das escalas. Utiliza as folhas motor e datas. Tem apenas um script associado e que pode ser iniciado através do botão "MOTOR" que se encontra na folha "Geral". Este botão chama a função "ordenacaoDispensa", este script inicia por odenar a coluna A (Precedencias) e a Coluna D (Data de ultimo serviço) por ordem crescente. De seguida compara as datas da coluna E (Fim de dispensa) com as datas da coluna A da folha "datas" (datas das próximas escalas) e move a linha (o aluno e as suas informações) para a escala em que acaba a dispensa. Caso a dispensa seja prologada (> 110 dias) o aluno é colocado no final da lista.
