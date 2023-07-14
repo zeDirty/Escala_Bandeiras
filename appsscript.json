@@ -1,0 +1,98 @@
+{
+  "timeZone": "Europe/London",
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Sheets",
+        "serviceId": "sheets",
+        "version": "v4"
+      }
+    ]
+  },
+  "webapp": {
+    "executeAs": "USER_DEPLOYING",
+    "access": "ANYONE"
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "sheets": {
+    "macros": [
+      {
+        "menuName": "MESES",
+        "functionName": "MESES"
+      },
+      {
+        "menuName": "MESES1",
+        "functionName": "MESES1"
+      },
+      {
+        "menuName": "MESES",
+        "functionName": "MESES"
+      },
+      {
+        "menuName": "MESES1",
+        "functionName": "MESES1"
+      },
+      {
+        "menuName": "Untitled Macro",
+        "functionName": "UntitledMacro"
+      },
+      {
+        "menuName": "123",
+        "functionName": "_123"
+      },
+      {
+        "menuName": "1234",
+        "functionName": "_1234"
+      },
+      {
+        "menuName": "prePrint",
+        "functionName": "prePrint"
+      },
+      {
+        "menuName": "column",
+        "functionName": "column"
+      },
+      {
+        "menuName": "format",
+        "functionName": "format"
+      },
+      {
+        "menuName": "numFormat",
+        "functionName": "numFormat"
+      },
+      {
+        "menuName": "protec",
+        "functionName": "protec"
+      },
+      {
+        "menuName": "oio",
+        "functionName": "oio"
+      },
+      {
+        "menuName": "trocasTabelaz",
+        "functionName": "trocasTabelaz"
+      },
+      {
+        "menuName": "_1to1",
+        "functionName": "_1to1"
+      },
+      {
+        "menuName": "deleteUp",
+        "functionName": "deleteUp"
+      },
+      {
+        "menuName": "borders",
+        "functionName": "borders"
+      },
+      {
+        "menuName": "filtro",
+        "functionName": "filtro"
+      },
+      {
+        "menuName": "move line",
+        "functionName": "moveline"
+      }
+    ]
+  }
+}
