@@ -7,22 +7,31 @@ function SpecialOnEdit(e) { // wrapping it within an onEdit(e) function
     e.range.rowStart >= 3 &&
     e.range.rowEnd <= 20 
   ){
-    var checkboxtest = e.range.getValue();
-    if(checkboxtest == true){  //Se a celula e for igual a true
-      //var range = e.range;
-      //var sheet = range.getSheet();
-      var editor = e.user.getEmail();
-      //Logger.log("Editor: " + editor + ", Range: " + range.getA1Notation() + ", Sheet: " + sheet.getName());
-      let linha = e.range.getRow(); //Vai buscar a linha em que isso ocorreu
-      let coluna = e.range.getColumn();
-      /*try {
-        check_Editor(editor, linha, coluna);
-      } catch (error) {
-        return; // Stop execution of SpecialOnEdit() when an error is thrown
-      }*/
-      console.log('123')
-      var request = verificarTroca1(linha, coluna); //inicia a função aceitarTrocas e passa a linha em que ocorreu essa atualizçao
-      Logger.log('request special On 1: '+request)
+    acquireLock()
+    try {
+      var checkboxtest = e.range.getValue();
+      if(checkboxtest == true){  //Se a celula e for igual a true
+        //var range = e.range;
+        //var sheet = range.getSheet();
+        var editor = e.user.getEmail();
+        //Logger.log("Editor: " + editor + ", Range: " + range.getA1Notation() + ", Sheet: " + sheet.getName());
+        let linha = e.range.getRow(); //Vai buscar a linha em que isso ocorreu
+        let coluna = e.range.getColumn();
+        /*try {
+          check_Editor(editor, linha, coluna);
+        } catch (error) {
+          return; // Stop execution of SpecialOnEdit() when an error is thrown
+        }*/
+        console.log('123')
+        var request = verificarTroca1(linha); //inicia a função aceitarTrocas e passa a linha em que ocorreu essa atualizçao
+        Logger.log('request special On 1: '+request)
+      }
+    }catch (error) {
+      // Handle any errors that occur during script execution
+      console.error(error);
+    } finally {
+      // Release the lock after the script finishes running
+      releaseLock();
       return     
     }
   } else if(
@@ -32,31 +41,40 @@ function SpecialOnEdit(e) { // wrapping it within an onEdit(e) function
     e.range.rowStart >= 3 &&
     e.range.rowEnd <= 20 
   ){
-    var checkboxtest = e.range.getValue();
-    if(checkboxtest == true){  //Se a celula e for igual a true
-      //var range = e.range;
-      //var sheet = range.getSheet();
-      var editor = e.user.getEmail();
-      //Logger.log("Editor: " + editor + ", Range: " + range.getA1Notation() + ", Sheet: " + sheet.getName());
-      let linha = e.range.getRow(); //Vai buscar a linha em que isso ocorreu
-      let coluna = e.range.getColumn();
-      /*try {
-        check_Editor(editor, linha, coluna);
-      } catch (error) {
-        return; // Stop execution of SpecialOnEdit() when an error is thrown
-      }*/
-      var ai = SpreadsheetApp.getUi();
-      var uiResponse = ai.alert(EMAIL_CAMARADA_SEC, ai.ButtonSet.YES_NO);
-      if (uiResponse == ai.Button.YES) { //caso a resposta seja "YES"
-        Browser.msgBox("Respondeu que sim")
-        var request = troca(linha); //inicia a função troca e passa a linha em que ocorreu essa atualizçao
-        Logger.log('request special On 2: '+request)
+    acquireLock()
+    try {
+      var checkboxtest = e.range.getValue();
+      if(checkboxtest == true){  //Se a celula e for igual a true
+        //var range = e.range;
+        //var sheet = range.getSheet();
+        var editor = e.user.getEmail();
+        //Logger.log("Editor: " + editor + ", Range: " + range.getA1Notation() + ", Sheet: " + sheet.getName());
+        let linha = e.range.getRow(); //Vai buscar a linha em que isso ocorreu
+        let coluna = e.range.getColumn();
+        /*try {
+          check_Editor(editor, linha, coluna);
+        } catch (error) {
+          return; // Stop execution of SpecialOnEdit() when an error is thrown
+        }*/
+        var ai = SpreadsheetApp.getUi();
+        var uiResponse = ai.alert(EMAIL_CAMARADA_SEC, ai.ButtonSet.YES_NO);
+        if (uiResponse == ai.Button.YES) { //caso a resposta seja "YES"
+          Browser.msgBox("Respondeu que sim")
+          var request = troca(linha); //inicia a função troca e passa a linha em que ocorreu essa atualizçao
+          Logger.log('request special On 2: '+request)
+          return
+        }  
+        Browser.msgBox("Respondeu que não")
+        coloca_false(linha, coluna)
         return
-      }  
-      Browser.msgBox("Respondeu que não")
-      coloca_false(linha, coluna)
-      return
-
+      }
+    }catch (error) {
+      // Handle any errors that occur during script execution
+      console.error(error);
+    } finally {
+      // Release the lock after the script finishes running
+      releaseLock();
+      return     
     }
   } else if (e.source.getSheetName() == FOLHA_ALUNOS && //folha tester
     e.range.columnStart == 19 && //range

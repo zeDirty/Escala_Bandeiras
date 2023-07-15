@@ -3,7 +3,7 @@ const LINK_PARTILHAR = 'https://docs.google.com/spreadsheets/d/1mGOOihTueH1mgP36
 //https://docs.google.com/spreadsheets/d/1mGOOihTueH1mgP36II3-fnKXMCR6Hn51KXJnmH8b3lk/edit?usp=sharing
 //https://docs.google.com/spreadsheets/d/1mGOOihTueH1mgP36II3-fnKXMCR6Hn51KXJnmH8b3lk/edit#gid=545149152
 const GRUPO_ACADEMIA = '00upglbi3612vis'
-const URL = "https://script.google.com/macros/s/AKfycbxCmAMaBr_S5YWqWkhJKAFcxtvHL8951BeTQxUkPLpVeThXzFkkfOWkuIkRWyRBydOY/exec"
+const URL = "https://script.google.com/macros/s/AKfycbyTP9uFEDatwUDHsMwlwOIM4jNBPP9j05XoZ8xsSZU7dTwu6BhBLuBlOyp3dDrUaMk5/exec"
 
 const COLOR_LIGHT_RED = '#f08080';
 const COLOR_RED = '#ff0000';

@@ -1,6 +1,6 @@
-function verificarTroca1(linha, coluna) {
+function verificarTroca1(linha) {
   //var baseUrl = ScriptApp.getService().getUrl();
-  var queryString = "?action=verificarTroca1&line=" + linha + "&col=" + coluna;
+  var queryString = "?action=verificarTroca1&line=" + linha;
   url = URL + queryString
   Logger.log(url)
 

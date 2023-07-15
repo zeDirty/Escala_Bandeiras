@@ -16,6 +16,9 @@ function sendGet(payload) {
 }
 
 function doGet(e) {
+  /*if (isScriptRunning()) {
+    return ContentService.createTextOutput('Script is already running. Please try again later.');
+  }*/
   var action = "verificarTroca1" //default
 
   if (e != undefined) {
