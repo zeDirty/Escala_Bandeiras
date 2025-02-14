@@ -6,10 +6,10 @@ function aceitarSec(linha) {
 
   const params = {
     method: "get",
-    headers: {"Authorization": "Bearer " + ScriptApp.getOAuthToken()},
+    headers: { "Authorization": "Bearer " + ScriptApp.getOAuthToken() },
   };
-    console.log('aceitarSec: 321')
-  var request = UrlFetchApp.fetch(url,params)
+  console.log('aceitarSec: 321')
+  var request = UrlFetchApp.fetch(url, params)
   Logger.log(request)
   Logger.log(request.getContentText())
   /*if (request.getResponseCode() == 200) {

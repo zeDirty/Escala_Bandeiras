@@ -1,5 +1,5 @@
 {
-  "timeZone": "Europe/London",
+  "timeZone": "Etc/UTC",
   "dependencies": {
     "enabledAdvancedServices": [
       {
@@ -17,54 +17,6 @@
   "runtimeVersion": "V8",
   "sheets": {
     "macros": [
-      {
-        "menuName": "MESES",
-        "functionName": "MESES"
-      },
-      {
-        "menuName": "MESES1",
-        "functionName": "MESES1"
-      },
-      {
-        "menuName": "MESES",
-        "functionName": "MESES"
-      },
-      {
-        "menuName": "MESES1",
-        "functionName": "MESES1"
-      },
-      {
-        "menuName": "Untitled Macro",
-        "functionName": "UntitledMacro"
-      },
-      {
-        "menuName": "123",
-        "functionName": "_123"
-      },
-      {
-        "menuName": "1234",
-        "functionName": "_1234"
-      },
-      {
-        "menuName": "prePrint",
-        "functionName": "prePrint"
-      },
-      {
-        "menuName": "column",
-        "functionName": "column"
-      },
-      {
-        "menuName": "format",
-        "functionName": "format"
-      },
-      {
-        "menuName": "numFormat",
-        "functionName": "numFormat"
-      },
-      {
-        "menuName": "protec",
-        "functionName": "protec"
-      },
       {
         "menuName": "oio",
         "functionName": "oio"
@@ -92,6 +44,14 @@
       {
         "menuName": "move line",
         "functionName": "moveline"
+      },
+      {
+        "menuName": "changeColor",
+        "functionName": "changeColor"
+      },
+      {
+        "menuName": "changeNormal",
+        "functionName": "changeNormal"
       }
     ]
   }

@@ -83,7 +83,7 @@ function borders() {
   spreadsheet.getRange('M5:N57').activate();
   spreadsheet.setCurrentCell(spreadsheet.getRange('N57'));
   spreadsheet.getActiveRangeList().setBorder(true, true, true, true, null, null, '#000000', SpreadsheetApp.BorderStyle.SOLID_MEDIUM)
-  .setBorder(null, null, null, null, true, true, '#000000', SpreadsheetApp.BorderStyle.SOLID);
+    .setBorder(null, null, null, null, true, true, '#000000', SpreadsheetApp.BorderStyle.SOLID);
 };
 
 function filtro() {
@@ -98,4 +98,21 @@ function moveline() {
   var spreadsheet = SpreadsheetApp.getActive();
   spreadsheet.getRange('2:2').activate();
   spreadsheet.getActiveSheet().moveRows(spreadsheet.getRange('2:2'), 33);
+};
+
+function changeColor() {
+  spreadMotor.getRange(8, 1).activate().setValue('o script está a correr. aguarde.....').setFontWeight('bold').setHorizontalAlignment('center').setBackground('#666666').setFontColor('#ffffff')
+  var spreadsheet = SpreadsheetApp.getActive();
+  spreadsheet.getRange('H1:L1').activate();
+  spreadsheet.getCurrentCell().setValue('o script está a correr. aguarde.....');
+  spreadsheet.getActiveRangeList().setFontWeight('bold').setHorizontalAlignment('center').setBackground('#666666').setFontColor('#ffffff');
+};
+
+function changeNormal() {
+  var spreadsheet = SpreadsheetApp.getActive();
+  spreadsheet.getRange('H1:L1').activate();
+  spreadsheet.getActiveRangeList().setBackground('#ffffff')
+  .clear({contentsOnly: true, skipFilteredRows: true})
+  .setFontWeight(null)
+  .setFontColor('#000000');
 };

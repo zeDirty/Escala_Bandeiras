@@ -26,7 +26,7 @@ function tiraTrocas() { //altera cor do fundo das celulas em O e P consuante PT 
     } else if (ptPD == 'PD') { //se PT/PD em G = PD
       for (let c = 4; c < rangeGeralOO.length; c++) { //altera cor da tabela de trocas quando aluno faz serviço
         if (rangeGeralOO[c] != '') {
-        let nipO = rangeGeralOO[c][0]; //NIP em O
+          let nipO = rangeGeralOO[c][0]; //NIP em O
           if (nipH == nipO) { //se NIP em H == NIP em O
             spreadGeral.getRange(c + 1, 15).setBackground(COLOR_RED); //cor de fundo da celula em M
           }
@@ -40,7 +40,7 @@ function tiraTrocas() { //altera cor do fundo das celulas em O e P consuante PT 
       }
     }
   }
-  for (let e = 4; e < rangeGeralOO.length; e++){ //Elimina troca na tabela caso tenha acontecido PT e PD
+  for (let e = 4; e < rangeGeralOO.length; e++) { //Elimina troca na tabela caso tenha acontecido PT e PD
     if (rangeGeralOO[e] != '') {
       let backGroundOO = spreadGeral.getRange((e + 1), 15).getBackground()
       let backGroundPP = spreadGeral.getRange((e + 1), 16).getBackground()
@@ -51,20 +51,23 @@ function tiraTrocas() { //altera cor do fundo das celulas em O e P consuante PT 
     }
   }
 
-  for (let a = 57; a > 3; a--){ //elimina colunas vazias na tabela de trocas (Delete Cell Shift Up)
+  for (let a = 57; a > 3; a--) { //elimina colunas vazias na tabela de trocas (Delete Cell Shift Up)
     let rangeGeralOO1 = spreadGeral.getRange("O:O").getValues();
-    if (rangeGeralOO1[a][0] != ''){
+    if (rangeGeralOO1[a][0] != '') {
       //console.log('a: '+a+' 1 '+rangeGeralOO1[a][0])
-      for (let b = a; b > 3; b--){
+      for (let b = a; b > 3; b--) {
         let rangeGeralOO2 = spreadGeral.getRange("O:O").getValues()
         if (rangeGeralOO2[b][0] == '') {
-          console.log('b: '+b+' 2 '+rangeGeralOO2[b][0])
+          console.log('b: ' + b + ' 2 ' + rangeGeralOO2[b][0])
           spreadGeral.getRange((b + 1), 15, 1, 2).deleteCells(SpreadsheetApp.Dimension.ROWS);
         }
       }
     }
   }
   spreadGeral.getRange('O5:P57').setBorder(true, true, true, true, null, null, '#000000', SpreadsheetApp.BorderStyle.SOLID_MEDIUM)
-  .setBorder(null, null, null, null, true, true, '#000000', SpreadsheetApp.BorderStyle.SOLID); //BORDERS
+    .setBorder(null, null, null, null, true, true, '#000000', SpreadsheetApp.BorderStyle.SOLID); //BORDERS
   spreadDatas.deleteRow(1) //elimina data na folha datas
+
+  ordenacaoDispensa();
+  aCode();
 };

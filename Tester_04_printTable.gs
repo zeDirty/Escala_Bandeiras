@@ -1,4 +1,4 @@
-/*Primeiro for guarda o nip da folha tester da celula A3 e vai compara lo com os nips na coluna G da folha Geral. Se o encontrar irá colocar a escala onde aparece o mesmo na posição (8,1,18,13) da folha tester. Coloca a data da escala na celula (6, 3). Coloca a cor de fundo
+/*Primeiro for guarda o nip da folha tester da celula A3 e vai compara lo com os nips na coluna H da folha Geral. Se o encontrar irá colocar a escala onde aparece o mesmo na posição (8,1,18,13) da folha tester. Coloca a data da escala na celula (6, 3). Coloca a cor de fundo
 Segundo for guarda o nip da folha tester da celula A3 e vai compara lo com os nips na coluna A da folha Geral. Coloca data na celula (6,2). Caso a celula A11 estiver vazia então vai fazer o print da escala na posição (8,1,18,11) e colocar a cor de fundo. Caso a celula A11 não estiver vazia irá fazer o print da escala na posição (27, 1, 18, 11) e colocar as cores de fundo*/
 
 function printTable() { //imprime as escalas de quando o aluno irá fazer serviço Tester
@@ -15,16 +15,16 @@ function printTable() { //imprime as escalas de quando o aluno irá fazer servi�
     spreadTester.getRange(11, 8, 15, 1).setBackground(COLOR_WHITE);
     spreadTester.getRange(30, 8, 15, 1).setBackground(COLOR_WHITE);
 
-    for (let c = 0; c < rangeGeralHH.length; c++) {//Comparação A3 Tester com coluna G geral. Coloca escala no primeiro espaço
+    for (let c = 0; c < rangeGeralHH.length; c++) {//Comparação A3 Tester com coluna H geral. Coloca escala no primeiro espaço
       if (c % 19 >= 4 && rangeGeralAA[c] != '') {
         let nipGeralH = rangeGeralHH[c][0]; //NIPs na coluna H da folha Geral
-        if (nipGeralH == nipTester) { //se a celula A3 for igual ao NIP na coluna G
+        if (nipGeralH == nipTester) { //se a celula A3 for igual ao NIP na coluna H
           const d = Math.floor(c / 19) + 1;
           let escalaNip = spreadGeral.getRange(19 * d - 17, 1, 18, 13).getValues(); //escala onde se entra o nip
           spreadTester.getRange(8, 1, 18, 13).setValues(escalaNip); //set values da escala
           let dataEscala = spreadGeral.getRange((19 * d - 17), 1).getValue(); //data correspondente à escala onde se encontra o NIP
           spreadTester.getRange(6, 3).setValue(dataEscala); //set value da data
-          for (let i = 0; i <= 14; i++){ //percorre escala para alterar cor background
+          for (let i = 0; i <= 14; i++) { //percorre escala para alterar cor background
             let colorBack = spreadGeral.getRange(19 * d - 14 + i, 8).getBackground();
             //console.log('Nip: '+escalaNip[i][0])
             if (colorBack == COLOR_WHITE) continue;
@@ -38,7 +38,7 @@ function printTable() { //imprime as escalas de quando o aluno irá fazer servi�
         celTrocaData.setValue('Sem Trocas');
       }
     }
-    
+
     for (let b = 0; b < rangeGeralAA.length; b++) { //Comparação A3 Tester com coluna A geral. Caso A11 vazio coloca no primeiro, caso contrario no segundo.
       if (b % 19 >= 4 && rangeGeralAA[b] != '') {
         let nipGeralA = rangeGeralAA[b][0]; //NIPs na coluna A da folha Geral
@@ -49,7 +49,7 @@ function printTable() { //imprime as escalas de quando o aluno irá fazer servi�
           if (spreadTester.getRange(11, 1).isBlank()) { //se a celula A11 estiver vazia
             let escalaEfetivo = spreadGeral.getRange(19 * a - 17, 1, 18, 13).getValues(); //vai buscar escala onde NIP em A3 está na coluna A de Geral
             spreadTester.getRange(8, 1, 18, 13).setValues(escalaEfetivo); //print dessa escala
-            for (let f = 0; f <= 14; f++){ //backGroundColor
+            for (let f = 0; f <= 14; f++) { //backGroundColor
               let colorBackTwo = spreadGeral.getRange(19 * a - 14 + f, 8).getBackground();
               //let rangeNo = spreadGeral.getRange(19 * a - 14 + f, 8).getValues();
               //console.log('Nip: '+ rangeNo[0][0])
@@ -60,7 +60,7 @@ function printTable() { //imprime as escalas de quando o aluno irá fazer servi�
           } else {
             let escalaTroca = spreadGeral.getRange(19 * a - 17, 1, 18, 13).getValues(); //vai buscar escala onde NIP em A3 está na coluna A de Geral
             spreadTester.getRange(27, 1, 18, 13).setValues(escalaTroca); //print dessa escala
-            for (let g = 0; g <= 14; g++){
+            for (let g = 0; g <= 14; g++) {
               let colorBackTree = spreadGeral.getRange(19 * a - 14 + g, 8).getBackground();
               if (colorBackTree == COLOR_WHITE) continue;
               //console.log('terceiro for 1d '+colorBackTree+' a '+a+' g '+g)
@@ -84,12 +84,12 @@ function printTable() { //imprime as escalas de quando o aluno irá fazer servi�
     if (celTrocaDisp.isBlank()) { //caso celula vazia considera que aluno está de dispensa
       spreadTester.getRange(6, 3).setValue('Dispensa');
       spreadTester.getRange(6, 2).setValue('Dispensa');
-    }  
-  }catch (error) {
+    }
+  } catch (error) {
     // Handle any errors that occur during script execution
     console.error(error);
   } finally {
     // Release the lock after the script finishes running
     releaseLock();
-  } 
+  }
 };

@@ -1,5 +1,5 @@
 function aceitarSecretaria(linha) {   //copiar nips na lista do tester e colar no geral, eliminar nips no tester. verificar, aceitar e secretaria 'false'.
-  //console.log('1234 aceita Secretaria: '+linha)
+  console.log('1234 aceita Secretaria: ' + linha)
   var liner = linha;
   var spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
   var spreadGeral = spreadsheet.getSheetByName(FOLHA_GERAL);
@@ -25,10 +25,10 @@ function aceitarSecretaria(linha) {   //copiar nips na lista do tester e colar n
       var nomeNipO = rangeInfosBH[c][4]; //nome
     }
   }
-  console.log([emailNipO+emailNipP])
-  //MailApp.sendEmail(emailNipO,"Pedido de troca, Escala de Bandeira",'A sua troca foi aceite pela secretaria.\n\n'+LINK_PARTILHAR, {name: 'José Tostes'});
+  console.log([emailNipO + emailNipP])
+  MailApp.sendEmail(emailNipO, "Pedido de troca, Escala de Bandeira", 'A sua troca foi aceite pela secretaria.\n\n' + LINK_PARTILHAR, { name: 'José Tostes' });
   Utilities.sleep(100);
-  //MailApp.sendEmail(emailNipP,"Pedido de troca, Escala de Bandeira",'A sua troca foi aceite pela secretaria.\n\n'+LINK_PARTILHAR, {name: 'José Tostes'});
+  MailApp.sendEmail(emailNipP, "Pedido de troca, Escala de Bandeira", 'A sua troca foi aceite pela secretaria.\n\n' + LINK_PARTILHAR, { name: 'José Tostes' });
 
   for (let d = 0; d < rangeGeralO5P57.length; d++) { //Alterações nas Folhas
     let nipOGeral = rangeGeralO5P57[d][0];
@@ -49,6 +49,9 @@ function aceitarSecretaria(linha) {   //copiar nips na lista do tester e colar n
           protection.remove();
         }
       }
+
+      aCode();
+
       return;
     }
   }

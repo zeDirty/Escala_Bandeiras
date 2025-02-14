@@ -1,6 +1,6 @@
-function insertRow() {
+function getRemoveProtection() { //Botão trocas no tester
   //var url = ScriptApp.getService().getUrl();
-  var queryString = "?action=updateTester" // Construct the query string
+  var queryString = "?action=removeProtection" // Construct the query string
   url = URL + queryString // Construct the complete URL by combining the base URL with the query string
   Logger.log(url)
 

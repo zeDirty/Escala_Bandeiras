@@ -11,7 +11,7 @@ function showSec() { //Mostra e esconde folhas
 };
 
 function hideSec() {
-  var spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID)  
+  var spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID)
 
   spreadsheet.getSheetByName(FOLHA_MOTOR).hideSheet();
   spreadsheet.getSheetByName(FOLHA_PRINTER).hideSheet();

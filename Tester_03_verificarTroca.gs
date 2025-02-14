@@ -3,12 +3,12 @@ function verificarTester(linha) { //Verifica se alunos estão de dispensa, troca
   var spreadGeral = spreadsheet.getSheetByName(FOLHA_GERAL);
   var spreadMotor = spreadsheet.getSheetByName(FOLHA_MOTOR);
   var spreadTester = spreadsheet.getSheetByName(FOLHA_ALUNOS);
-  var spreadInfos = spreadsheet.getSheetByName(FOLHA_INFO);
+  //var spreadInfos = spreadsheet.getSheetByName(FOLHA_INFO);
   var rangeGeralAA = spreadGeral.getRange("A:A").getValues();
   var rangeGeralOO = spreadGeral.getRange("O:O").getValues();
   var rangeGeralPP = spreadGeral.getRange("P:P").getValues();
-  var rangeInfosBH = spreadInfos.getRange("B:H").getValues();
-  var rangeInfosBB = spreadInfos.getRange("B:B").getValues();
+  //var rangeInfosBH = spreadInfos.getRange("B:H").getValues();
+  //var rangeInfosBB = spreadInfos.getRange("B:B").getValues();
   var rangeTesterOO = spreadTester.getRange("O:O").getValues();
   var rangeTesterPP = spreadTester.getRange("P:P").getValues();
   var rangeMotorBE = spreadMotor.getRange("B:E").getValues();
@@ -45,7 +45,7 @@ function verificarTester(linha) { //Verifica se alunos estão de dispensa, troca
   for (let a = 0; a < rangeGeralAA.length; a++) { //verifica se os alunos estão a fazer troca e destroca na mesma escala
     if (a % 19 >= 4 && rangeGeralAA[a] != '') {
       let nipAGeral = rangeGeralAA[a][0]; //NIP em A do geral
-      //console.log(nipOTester,nipAGeral)
+      console.log(nipOTester,nipAGeral)
       if (nipOTester == nipAGeral) { //Se NIP em O do tester == NIP em A do geral
         const d = Math.floor(a / 19) + 1;
         let escalaNipM = spreadGeral.getRange(19 * d - 14, 1, 15, 1).getValues(); //escala onde está o nip em O
@@ -75,7 +75,7 @@ function verificarTester(linha) { //Verifica se alunos estão de dispensa, troca
             if (nipPTester == nipGeralA_PD) { //se forem iguais coloca o valor que está em P em H(no geral)
               const linhaNipGeralA_PD = h;
               console.log(linhaNipGeralA_PD);
-              if (linhaNipGeralA_PT > linhaNipGeralA_PD){
+              if (linhaNipGeralA_PT > linhaNipGeralA_PD) {
                 console.log('Destroca_Troca');
                 spreadTester.getRange(liner, 17).setValue(false); //coloca os valores em "false" nas colunas em que se colocou "true"
                 json = JSON.stringify({
@@ -103,27 +103,16 @@ function verificarTester(linha) { //Verifica se alunos estão de dispensa, troca
         message: ALUNO_EFETIVO_A_TROCAR
       })
       return json*/
-      for (let i = 1; i < rangeInfosBB.length; i++) { //Se tanto o NIP em O do Tester e o NIP em P do Tester estiver na tabela geral, o programa vai continuar para envio de email
-        let nipInfos = rangeInfosBH[i][0]; //NIP da folha motor
-        if (nipOTester == nipInfos) { //Se NIP da folha motor == NIP em O do tester
-          var emailNipO = rangeInfosBH[i][6]; //email do nip O
-          var postoNipO = rangeInfosBH[i][1];
-          var espNipO = rangeInfosBH[i][2];
-          var nomeNipO = rangeInfosBH[i][4]; //Nome do NIP O
-          json = JSON.stringify({
-            message: ALUNO_EFETIVO_A_TROCAR,
-            messageContent: {
-              emailNipO,
-              nomeNipO,
-              nipPTester,
-              postoNipO,
-              espNipO,
-              liner
-            }
-          })
-          return json
+      //Se tanto o NIP em O do Tester e o NIP em P do Tester estiver na tabela geral, o programa vai continuar para envio de email
+      json = JSON.stringify({
+        message: ALUNO_EFETIVO_A_TROCAR,
+        messageContent: {
+          nipOTester,
+          nipPTester,
+          liner
         }
-      }
+      })
+      return json
     } else if (nipPTester == nipOGeral || nipPTester == nipPGeral) { //Se NIP em P do tester == NIP em O do Geral OU NIP em P do tester == NIP em P do Geral
       console.log('aluno troca a trocar')
       /*spreadTester.getRange(liner, 15).clearContent(); //caso seja verdade irá eliminar os NIPs
@@ -133,49 +122,26 @@ function verificarTester(linha) { //Verifica se alunos estão de dispensa, troca
         message: ALUNO_TROCA_A_TROCAR
       return json
       })*/
-      for (let i = 1; i < rangeInfosBB.length; i++) { //Se tanto o NIP em O do Tester e o NIP em P do Tester estiver na tabela geral, o programa vai continuar para envio de email
-        let nipInfos = rangeInfosBH[i][0]; //NIP da folha motor
-        if (nipOTester == nipInfos) { //Se NIP da folha motor == NIP em O do tester
-          var emailNipO = rangeInfosBH[i][6]; //email do nip O
-          var postoNipO = rangeInfosBH[i][1];
-          var espNipO = rangeInfosBH[i][2];
-          var nomeNipO = rangeInfosBH[i][4]; //Nome do NIP O
-          json = JSON.stringify({
-            message: ALUNO_TROCA_A_TROCAR,
-            messageContent: {
-              emailNipO,
-              nomeNipO,
-              nipPTester,
-              postoNipO,
-              espNipO,
-              liner
-            }
-          })
-          return json
-        }
-      }
-    }
-  }
-
-  for (let i = 1; i < rangeInfosBH.length; i++) { //Envio de email caso não haja erros
-    let nipMotor = rangeInfosBH[i][0]; //NIP da folha motor
-    if (nipOTester == nipMotor) { //Se NIP da folha motor == NIP em O do tester
-      var emailNipO = rangeInfosBH[i][6]; //email do nip O
-      var postoNipO = rangeInfosBH[i][1];
-      var espNipO = rangeInfosBH[i][2];
-      var nomeNipO = rangeInfosBH[i][4]; //Nome do NIP O
+      //Se tanto o NIP em O do Tester e o NIP em P do Tester estiver na tabela geral, o programa vai continuar para envio de email
       json = JSON.stringify({
-        message: CONTINUACAO_EMAIL,
+        message: ALUNO_TROCA_A_TROCAR,
         messageContent: {
-          emailNipO,
-          nomeNipO,
+          nipOTester,
           nipPTester,
-          postoNipO,
-          espNipO,
           liner
         }
       })
       return json
     }
   }
+  //Envio de email caso não haja erros
+  json = JSON.stringify({
+    message: CONTINUACAO_EMAIL,
+    messageContent: {
+      nipOTester,
+      nipPTester,
+      liner
+    }
+  })
+  return json
 };
