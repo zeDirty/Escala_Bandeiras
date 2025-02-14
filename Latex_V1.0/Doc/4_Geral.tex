@@ -1,0 +1,31 @@
+\graphicspath{{Images/}}
+
+\section{Geral}
+Na Folha "Geral" correm cinco \textit{scripts} iniciados por quatro botões: "MOTOR" "TROCAS", "PÓS-SERVIÇO" e "PRINTER".
+
+\subsection{Motor}
+
+É na folha geral que se inicia a função "ordenacaoDispensa" (Motor\_ordenaDisp) através do botão "MOTOR", como é referido no capítulo \ref{Motor}.
+
+\subsection{Atualização de trocas ("TROCAS")}
+\label{Atualização de trocas}
+A função "aCode" (Geral\_Trocas) é iniciada pelo botão "TROCAS". Este \textit{script} inicia por limpar o conteúdo das colunas G e H. Percorre a tabela de trocas e coloca as trocas nas várias escalas da folha. No final, inicia a função "verificar" (Geral\_verificaTrocas).
+
+\subsubsection{Verificação de Trocas}
+Esta função é iniciada a partir da "aCode" (Geral\_Trocas). O objetivo desta função é verificar as trocas,
+"verificar" (Geral\_verificaTrocas). Este \textit{script} está dividido em três grupos. O primeiro verifica se os alunos estão a fazer troca e destroca na mesma escala, o segundo verifica se os alunos estão de dispensa. Na terceira parte, verifica se os alunos que estão dispensados ainda estão de dispensa.
+
+\subsection{Atualização de Escala}
+Este \textit{script} faz a atualização da escala após a realização do serviço. "tiraTrocas" (Geral\_atualizaDeEscala) inicia por verificar os "PTs" e os "PDs" na primeira escala e altera a cor desse NIP na tabela de trocas (O:P). Coloca a data da escala na coluna D (Data de último serviço) na folha "Motor". Caso se efetue a destroca, elimina os NIPs da tabela de trocas. Elimina as colunas vazias da tabela de trocas na folha "Geral". Termina por chamar as funções "ordenacaoDispensa" (Motor\_ordenaDisp) e a "aCode" (Geral\_Trocas).
+
+\subsection{Motor}
+
+Na folha Geral inicia-se a função "printFinal" (Printer\_printFinal) através do botão "PRINTER", como é referido no capítulo \ref{Pré-impressão}.
+
+\subsection{Secretaria}
+
+Se por acaso ocorrer algum erro no "Tester" e por isso surgir a necessidade de colocar diretamente os nips na tabela de trocas da folha Geral, é importante verificar a possibilidade dessas trocas, pois as verificações realizadas na folha Geral não são as mesmas que são feitas no "Tester".
+
+\subsection{Aluno Responsável}
+
+Verificar a tabela de trocas por possíveis erros.

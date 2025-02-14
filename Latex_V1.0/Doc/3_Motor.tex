@@ -1,0 +1,9 @@
+\graphicspath{{Images/}}
+
+\section{Motor}
+\label{Motor}
+É a folha responsável pela ordenação das escalas. Tem apenas um \textit{script} associado e que pode ser iniciado através do botão "MOTOR" que se encontra na folha "Geral". Este botão chama a função "ordenacaoDispensa" (Motor\_ordenaDisp), este \textit{script} inicia por ordenar a coluna A (Precedências) e a coluna D (Data de último serviço) por ordem crescente. De seguida, compara as datas da coluna E (Fim de dispensa) com as datas da coluna A da folha "datas" (datas das próximas escalas) e move a linha (o aluno e as suas informações) para a escala em que acaba a dispensa. Caso a dispensa acabe numa data superior à última escala na folha "datas", o aluno é colocado no final da lista. No final, é chamado o \textit{script} "aCode" (Geral\_Trocas) que realiza as trocas dos alunos, como referido no subcapítulo \ref{Atualização de trocas}.
+
+\subsection{Secretaria}
+
+É da responsabilidade da secretaria manter as datas de dispensa atualizadas. De qualquer das formas, o aluno responsável poderá ajudar a secretaria neste processo por ser uma ponte entre a secretaria e os alunos.
